@@ -1,3 +1,4 @@
+package kata.impl;
 import java.util.Scanner;
 
 public class LeapYear {
@@ -22,7 +23,7 @@ public class LeapYear {
 
 		// when following Julian calendar
 		if (year < 1583) {
-			if (year % 4 == 0) {
+			if (isDivisibleBy4(year)) {
 				leap = true;
 			} else
 				leap = false;
@@ -30,12 +31,12 @@ public class LeapYear {
 		// when following Gregorian calendar
 		else {
 
-			if (year % 4 == 0) {
+			if (isDivisibleBy4(year)) {
 
-				if (year % 100 == 0) {
+				if (isDivisibleBy100(year)) {
 
 					// first condition
-					if (year % 400 == 0)
+					if (isDivisibleBy400(year)) 
 						leap = true;
 					else
 						leap = false; // second statement
@@ -55,4 +56,25 @@ public class LeapYear {
 
 		return leap;
 	}
+	private static boolean isDivisibleBy400(int year) {
+		// TODO Auto-generated method stub
+		return checkDivisibility(year, 400);
+	}
+
+	private static boolean isDivisibleBy100(int year) {
+		// TODO Auto-generated method stub
+		return checkDivisibility(year, 100);
+	}
+
+	private static boolean isDivisibleBy4(int year) {
+		// TODO Auto-generated method stub
+		return checkDivisibility(year,4);
+	}
+
+	private static boolean checkDivisibility(int year, int num) {
+		// TODO Auto-generated method stub
+		
+		return (year%num==0);
+	}
+
 }
